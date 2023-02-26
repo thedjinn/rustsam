@@ -795,7 +795,7 @@ fn adjust_lengths(phonemes: &mut Vec<Phoneme>) {
                 if phonemes[position].index == PHONEME_RX || phonemes[position].index == PHONEME_LX {
                     position += 1;
 
-                    if phonemes[position].has_flag(flag::CONSONANT) {
+                    if phonemes.get(position).map(|phoneme| phoneme.has_flag(flag::CONSONANT)).unwrap_or(false) {
                         // followed by consonant?
 
                         // decrease length of vowel by 1 frame
